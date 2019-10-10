@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,11 +23,10 @@ public class GameController {
         return new ModelAndView(RPSConstants.INDEX);
     }
 
-    @RequestMapping(value = RPSConstants.PLAY_URL, method = RequestMethod.GET)
-    public ModelAndView play(Model model) {
-        RoundResult roundResult = gameService.play();
-        model.addAttribute(RPSConstants.ROUND_RESULTS, roundResult);
-        return new ModelAndView(RPSConstants.INDEX);
+    @RequestMapping(value = RPSConstants.PLAY_URL, method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public RoundResult play() {
+        return gameService.play();
     }
 
     @RequestMapping(value = RPSConstants.STATS_URL, method = RequestMethod.GET)

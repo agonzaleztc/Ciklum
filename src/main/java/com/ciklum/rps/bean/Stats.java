@@ -2,12 +2,13 @@ package com.ciklum.rps.bean;
 
 public class Stats {
 
+    /** Total of played rounds. */
     private long totalPlayedRounds;
-
+    /** Total of player 1 wins. */
     private long totalPlayer1Wins;
-
+    /** Total of player 2 wins. */
     private long totalPlayer2Wins;
-
+    /** Total of draws. */
     private long totalDraws;
 
     public long getTotalPlayedRounds() {
